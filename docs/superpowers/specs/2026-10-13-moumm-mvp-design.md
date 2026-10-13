@@ -1,6 +1,6 @@
 # Moumm MVP — SNS 맛집·카페 방문 판단 정보 통합
 
-- 상태: 대화에서 설계 승인됨
+- 상태: 대화에서 합의한 내용을 문서화함 — 최종 검토 요청
 - 작성일: 2026-10-13
 - 기준 문서: [MVP SNS Notion](https://app.notion.com/p/MVP-SNS-3f30cc9b23208128a741f008932159d0?source=copy_link)
 
