@@ -34,7 +34,7 @@
 - 저장소 루트에 Next.js(App Router) + TypeScript 앱 생성. `spikes/`는 그대로 둔다.
 - 테스트: Vitest(단위), Playwright(E2E)
 - 스키마 검증: zod
-- 환경 변수: `KAKAO_REST_API_KEY`, `ANTHROPIC_API_KEY`, (비교용) `GEMINI_API_KEY` — `.env.example`에 키 이름만 기록
+- 환경 변수: `KAKAO_REST_API_KEY`, `GEMINI_API_KEY`, (선택) `ANTHROPIC_API_KEY` — `.env.example`에 키 이름만 기록
 - Vercel 배포, 함수 지역 `icn1`
 - 폴더 구조
 
@@ -67,7 +67,7 @@ fixtures/phase0/           Phase 0 샘플 13개 (캡션, 정답 라벨, 카카�
 - `spikes/og-probe/lib/probe.js`의 `normalize`를 TypeScript로 옮긴다.
 - 테스트도 함께 옮긴다: 13개 샘플, `/계정명/p/`, `img_index`, `reels`·`tv`, 잘못된 도메인.
 
-### 3. MetaFetcher (0.5일)
+### 3. MetaFetcher (0.5일) — 완료 2026-10-20
 
 - `og-probe`의 `readMeta`, `captionFrom`, 요청 로직을 옮긴다.
 - 모바일 브라우저 UA로 요청 → 캡션이 없거나 로그인 페이지면 크롤러 UA로 1회 재시도.
@@ -132,8 +132,11 @@ fixtures/phase0/           Phase 0 샘플 13개 (캡션, 정답 라벨, 카카�
 
 ## 착수 전 결정할 것
 
-- [x] LLM: 기본 Claude Haiku 5.5 (구조화 출력·이미지 입력 지원). 4번 작업에서 Gemini 2.5 Flash-Lite와 Phase 0 샘플 13개로 비교 후 확정 (2026-10-18)
+- [x] LLM: **Gemini API 무료 등급의 Flash-Lite**로 시작 (2026-10-20 변경, 이전 결정은 Claude Haiku 5.5)
+  - 이유: 개발과 10명 테스트까지 비용 없이 진행. 구조화 출력(JSON 스키마)과 이미지 입력 지원
+  - 4번 평가 스크립트로 정확도 확인 → 부족하면 무료 등급 Flash → 그래도 부족하면 유료 모델(Claude 등) 검토
   - 비교 기준: 상호 정답률, 범위 밖 판정, 여러 곳 개수, 스키마 오류 횟수, 응답 시간
+  - 무료 등급은 입력이 Google 제품 개선에 쓰인다. 공개 캡션·이미지만 보내고 사용자 개인정보는 보내지 않는다
   - `ClueExtractor`는 제공자 인터페이스로 만들어 모델 교체가 쉽게 한다
 - [ ] 카카오 개발자 앱 등록과 REST API 키 발급
 - [x] 패키지 매니저: pnpm (corepack으로 활성화, 2026-10-19)
