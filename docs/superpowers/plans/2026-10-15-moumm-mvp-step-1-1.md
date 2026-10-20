@@ -29,7 +29,7 @@
 
 ## 작업 목록
 
-### 0. 프로젝트 셋업 (0.5일)
+### 0. 프로젝트 셋업 (0.5일) — 완료 2026-10-19
 
 - 저장소 루트에 Next.js(App Router) + TypeScript 앱 생성. `spikes/`는 그대로 둔다.
 - 테스트: Vitest(단위), Playwright(E2E)
@@ -56,13 +56,13 @@ lib/
 fixtures/phase0/           Phase 0 샘플 13개 (캡션, 정답 라벨, 카카오 응답 기록)
 ```
 
-### 1. Phase 0 고정 데이터 만들기 (0.5일)
+### 1. Phase 0 고정 데이터 만들기 (0.5일) — 완료 2026-10-20
 
 - `fixtures/phase0/samples.json`: 링크, 유형, 캡션 원문, 정답 장소(상호·주소·카카오 장소 ID), 기대 결과(한 곳 / 여러 곳 / 체인 / 범위 밖)
 - 측정 시트 `docs/phase0/moumm-phase0-spike.xlsx`의 라벨을 옮긴다.
 - 이후 모든 테스트와 LLM 평가가 이 파일을 기준으로 돈다.
 
-### 2. SourceNormalizer (0.5일)
+### 2. SourceNormalizer (0.5일) — 완료 2026-10-20
 
 - `spikes/og-probe/lib/probe.js`의 `normalize`를 TypeScript로 옮긴다.
 - 테스트도 함께 옮긴다: 13개 샘플, `/계정명/p/`, `img_index`, `reels`·`tv`, 잘못된 도메인.
@@ -84,7 +84,7 @@ fixtures/phase0/           Phase 0 샘플 13개 (캡션, 정답 라벨, 카카�
 
 ### 5. KakaoPlaceProvider (1일)
 
-- 키워드 검색: `category_group_code`로 음식점(FD6)·카페(CE7)만.
+- 키워드 검색: `category_group_code`로 음식점(FD6)·카페(CE7)만. 이 파라미터는 값을 하나만 받으므로 두 번 호출해서 합친다.
 - 주소 검색.
 - 테스트: 실제 응답을 한 번 기록해 `fixtures/phase0/kakao/`에 저장하고, 테스트는 기록된 응답으로 돈다.
 

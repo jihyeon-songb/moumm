@@ -1,0 +1,505 @@
+{
+  "description": "Phase 0 spike samples (2026-10-15). Ground truth for unit tests and LLM clue-extraction eval. Caption texts are other people's Instagram posts, so they are kept out of git in private/captions.json (see README.md). kakaoPlaceId values come from Kakao Map and should be re-checked against the Local API.",
+  "kinds": {
+    "single": "one place",
+    "multi": "several places in one post",
+    "chain": "brand with several branches, branch unknown",
+    "out_of_scope": "not a restaurant/cafe post"
+  },
+  "clueSources": {
+    "caption": "og:description caption",
+    "cover_image": "text on the cover image (og:image)",
+    "carousel_image": "text on a carousel image (img_index)"
+  },
+  "samples": [
+    {
+      "id": "s01",
+      "url": "https://www.instagram.com/p/DebSBlTkkvr/?srtk=bWwwM2k0dWgxam9z",
+      "shortcode": "DebSBlTkkvr",
+      "type": "post",
+      "imgIndex": null,
+      "account": "bbo.log",
+      "kind": "single",
+      "clueSource": "caption",
+      "sponsored": false,
+      "places": [
+        {
+          "name": "다도해물나라",
+          "address": "광주 서구 마륵복개로 57",
+          "kakaoPlaceId": "1342204768",
+          "regionHint": "상무지구",
+          "verified": true
+        }
+      ],
+      "notes": "정형 캡션. 위치 태그는 'Gwangju, South Korea'뿐."
+    },
+    {
+      "id": "s02",
+      "url": "https://www.instagram.com/reel/DeWgkk4SoC4/?mdxt=MXc2ZGljZXozeHVsNA==",
+      "shortcode": "DeWgkk4SoC4",
+      "type": "reel",
+      "imgIndex": null,
+      "account": "aneyukk",
+      "kind": "out_of_scope",
+      "clueSource": null,
+      "sponsored": null,
+      "places": [],
+      "notes": "다이어트 식단 제품. 영상은 연령 제한."
+    },
+    {
+      "id": "s03",
+      "url": "https://www.instagram.com/reel/DeMiXAdJ49Q/?cplk=eTVqYWQyYXN4MTV4",
+      "shortcode": "DeMiXAdJ49Q",
+      "type": "reel",
+      "imgIndex": null,
+      "account": "gwangjuboangwan",
+      "kind": "single",
+      "clueSource": "caption",
+      "sponsored": false,
+      "places": [
+        {
+          "name": "장군닭발",
+          "address": "광주 광산구 풍영철길로 15 콜럼버스월드 B1 B103호",
+          "kakaoPlaceId": "622594976",
+          "regionHint": "우산동",
+          "verified": true
+        }
+      ],
+      "notes": "'우산동 장군닭발'로 검색하면 정답이 빠짐(도로명 주소). 상호만 검색 시 전국 74건 중 1위."
+    },
+    {
+      "id": "s04",
+      "url": "https://www.instagram.com/reel/Dd0lf4ABCUI/?exln=MXNyaDkwMG9kb3E5MQ==",
+      "shortcode": "Dd0lf4ABCUI",
+      "type": "reel",
+      "imgIndex": null,
+      "account": "gwangju_ari",
+      "kind": "single",
+      "clueSource": "caption",
+      "sponsored": false,
+      "places": [
+        {
+          "name": "이현김밥",
+          "address": "광주 북구 평교로 26",
+          "kakaoPlaceId": "1472281219",
+          "regionHint": "문흥동",
+          "verified": true
+        }
+      ],
+      "notes": "캡션 주소 26-1 vs 카카오 26. 상호명과 메뉴명이 같음."
+    },
+    {
+      "id": "s05",
+      "url": "https://www.instagram.com/reel/DdIo8VcTB-Y/?srtk=MWMzY3IwaGd2dmFtYw==",
+      "shortcode": "DdIo8VcTB-Y",
+      "type": "reel",
+      "imgIndex": null,
+      "account": "zzang_suning",
+      "kind": "single",
+      "clueSource": "caption",
+      "sponsored": false,
+      "places": [
+        {
+          "name": "원화소복",
+          "address": "광주 북구 임방울대로1042번길 14-20 1층 104호",
+          "kakaoPlaceId": "1931615832",
+          "regionHint": "광주",
+          "verified": true
+        }
+      ],
+      "notes": "카카오 카테고리 '떡,한과' (카페 아님)."
+    },
+    {
+      "id": "s06",
+      "url": "https://www.instagram.com/reel/DeRHxgqznzt/?cplk=MTVteTlvc3JyeWh3bA==",
+      "shortcode": "DeRHxgqznzt",
+      "type": "reel",
+      "imgIndex": null,
+      "account": "masit.da10",
+      "kind": "multi",
+      "clueSource": "cover_image",
+      "sponsored": false,
+      "places": [
+        {
+          "name": "국제연탄",
+          "address": null,
+          "kakaoPlaceId": null,
+          "regionHint": null,
+          "verified": false
+        },
+        {
+          "name": "신쭈꾸미",
+          "address": null,
+          "kakaoPlaceId": null,
+          "regionHint": null,
+          "verified": false
+        },
+        {
+          "name": "짱구이생막창",
+          "address": null,
+          "kakaoPlaceId": null,
+          "regionHint": null,
+          "verified": false
+        },
+        {
+          "name": "루키초밥",
+          "address": null,
+          "kakaoPlaceId": null,
+          "regionHint": null,
+          "verified": false
+        },
+        {
+          "name": "김서방국밥",
+          "address": null,
+          "kakaoPlaceId": null,
+          "regionHint": null,
+          "verified": false
+        },
+        {
+          "name": "한우촌",
+          "address": null,
+          "kakaoPlaceId": null,
+          "regionHint": null,
+          "verified": false
+        },
+        {
+          "name": "류카츠",
+          "address": null,
+          "kakaoPlaceId": null,
+          "regionHint": null,
+          "verified": false
+        },
+        {
+          "name": "고서옛날창평국밥",
+          "address": null,
+          "kakaoPlaceId": null,
+          "regionHint": null,
+          "verified": false
+        },
+        {
+          "name": "시골집",
+          "address": null,
+          "kakaoPlaceId": null,
+          "regionHint": null,
+          "verified": false
+        },
+        {
+          "name": "테이트모던",
+          "address": null,
+          "kakaoPlaceId": null,
+          "regionHint": null,
+          "verified": false
+        },
+        {
+          "name": "돈통구이",
+          "address": null,
+          "kakaoPlaceId": null,
+          "regionHint": null,
+          "verified": false
+        },
+        {
+          "name": "하도가",
+          "address": null,
+          "kakaoPlaceId": null,
+          "regionHint": null,
+          "verified": false
+        },
+        {
+          "name": "코모렙",
+          "address": null,
+          "kakaoPlaceId": null,
+          "regionHint": null,
+          "verified": false
+        },
+        {
+          "name": "똔꼬집",
+          "address": null,
+          "kakaoPlaceId": null,
+          "regionHint": null,
+          "verified": false
+        },
+        {
+          "name": "왕코등갈비",
+          "address": null,
+          "kakaoPlaceId": null,
+          "regionHint": null,
+          "verified": false
+        },
+        {
+          "name": "팔팔소곱창",
+          "address": null,
+          "kakaoPlaceId": null,
+          "regionHint": null,
+          "verified": false
+        },
+        {
+          "name": "종가집",
+          "address": null,
+          "kakaoPlaceId": null,
+          "regionHint": null,
+          "verified": false
+        },
+        {
+          "name": "평화진짬뽕",
+          "address": null,
+          "kakaoPlaceId": null,
+          "regionHint": null,
+          "verified": false
+        }
+      ],
+      "notes": "장소 목록은 커버 이미지 글자에만 있음(화면에 보인 18곳, 더 있을 수 있음). 카카오 매칭 미확인."
+    },
+    {
+      "id": "s07",
+      "url": "https://www.instagram.com/reel/DV-CmUZkRWg/?cplk=MTVheGRrOGYwZGJvMQ==",
+      "shortcode": "DV-CmUZkRWg",
+      "type": "reel",
+      "imgIndex": null,
+      "account": "kimcoffee_c",
+      "kind": "multi",
+      "clueSource": "caption",
+      "sponsored": false,
+      "places": [
+        {
+          "name": "오얏키친",
+          "address": "서울 마포구 월드컵로13길 19-23 2층 201호",
+          "kakaoPlaceId": "425298649",
+          "regionHint": "망원",
+          "verified": true
+        },
+        {
+          "name": "피망룸",
+          "address": "서울 마포구 희우정로20길 54 2층",
+          "kakaoPlaceId": "156037189",
+          "regionHint": "망원",
+          "verified": true
+        },
+        {
+          "name": "히비노",
+          "address": "서울 마포구 성미산로 20 2층",
+          "kakaoPlaceId": "855177758",
+          "regionHint": "망원",
+          "verified": true
+        }
+      ],
+      "notes": "게시일 2026-03-16. 오얏키친 영업시간 캡션 11-20 vs 카카오 11-16."
+    },
+    {
+      "id": "s08",
+      "url": "https://www.instagram.com/reel/Dakdm7hJSL-/?rpxt=MXZpM3ZmYjJldHM5Mw==",
+      "shortcode": "Dakdm7hJSL-",
+      "type": "reel",
+      "imgIndex": null,
+      "account": "with.moondal",
+      "kind": "multi",
+      "clueSource": "caption",
+      "sponsored": true,
+      "places": [
+        {
+          "name": "팔레트커리",
+          "address": "서울 성동구 상원1길 35 1층",
+          "kakaoPlaceId": "1379579647",
+          "regionHint": "뚝섬역",
+          "verified": true
+        },
+        {
+          "name": "아이안",
+          "address": "서울 성동구 왕십리로4가길 3 3층",
+          "kakaoPlaceId": "921699059",
+          "regionHint": "성수",
+          "verified": true
+        },
+        {
+          "name": "코리야",
+          "address": "서울 성동구 왕십리로4길 10-20 지하1층",
+          "kakaoPlaceId": "917278025",
+          "regionHint": "성수",
+          "verified": true
+        }
+      ],
+      "notes": "'협찬 광고' 표시는 화면에만 있고 메타데이터에는 없음. 아이안: 상호만 검색 3위, '성수 아이안' 1위. 코리야: 망원점과 구분 필요."
+    },
+    {
+      "id": "s09",
+      "url": "https://www.instagram.com/reel/DbS7TLxThK3/?cplk=bnpheXV3ZDFwYWhy",
+      "shortcode": "DbS7TLxThK3",
+      "type": "reel",
+      "imgIndex": null,
+      "account": "2n.0_yo",
+      "kind": "multi",
+      "clueSource": "caption",
+      "sponsored": false,
+      "places": [
+        {
+          "name": "석정관",
+          "address": null,
+          "kakaoPlaceId": null,
+          "regionHint": "동성로",
+          "verified": false
+        },
+        {
+          "name": "마라도생굴구이 대현점",
+          "address": "대구 북구 경대로5길 12-1 1층",
+          "kakaoPlaceId": null,
+          "regionHint": "경대정문",
+          "verified": true
+        },
+        {
+          "name": "양지포차",
+          "address": null,
+          "kakaoPlaceId": null,
+          "regionHint": null,
+          "verified": false
+        },
+        {
+          "name": "이자카야보우",
+          "address": null,
+          "kakaoPlaceId": null,
+          "regionHint": "대봉동",
+          "verified": false
+        },
+        {
+          "name": "팀스쿠치나",
+          "address": null,
+          "kakaoPlaceId": null,
+          "regionHint": "경대 북문",
+          "verified": false
+        },
+        {
+          "name": "8번식당 본점",
+          "address": "대구 중구 서성로13길 8 1층",
+          "kakaoPlaceId": null,
+          "regionHint": null,
+          "verified": true
+        },
+        {
+          "name": "안동막창 대구본점",
+          "address": null,
+          "kakaoPlaceId": null,
+          "regionHint": "경대",
+          "verified": false
+        },
+        {
+          "name": "요주본점",
+          "address": null,
+          "kakaoPlaceId": null,
+          "regionHint": null,
+          "verified": false
+        },
+        {
+          "name": "신세계양꼬치",
+          "address": "대구 동구 효신로5길 109",
+          "kakaoPlaceId": null,
+          "regionHint": null,
+          "verified": true
+        }
+      ],
+      "notes": "9곳 중 4곳만 확인. 마라도생굴구이는 '경대정문' 힌트로 대현점이 정답으로 추정(본점이 1위). 신세계양꼬치 1위는 광주 지점, 대구 지점은 2위. 양지포차는 정답 확정 불가."
+    },
+    {
+      "id": "s10",
+      "url": "https://www.instagram.com/p/DdyZ8kHmEys/?img_index=3&mdxt=MWcxbTMwYzhia2M3ag==",
+      "shortcode": "DdyZ8kHmEys",
+      "type": "post",
+      "imgIndex": 3,
+      "account": "ddu_unnie",
+      "kind": "chain",
+      "clueSource": "caption",
+      "sponsored": null,
+      "places": [
+        {
+          "name": "고봉당",
+          "address": null,
+          "kakaoPlaceId": null,
+          "regionHint": null,
+          "verified": false
+        }
+      ],
+      "notes": "카카오 '고봉당' 7개 지점(용산, 혜화대학로, 범계, 논현역, 홍대, 을지로, 문정). 지점 특정 불가."
+    },
+    {
+      "id": "s11",
+      "url": "https://www.instagram.com/reel/DaVBs5ABuMS/?rpxt=end2a3J2eW1sMmJj",
+      "shortcode": "DaVBs5ABuMS",
+      "type": "reel",
+      "imgIndex": null,
+      "account": "i_e_jeong",
+      "kind": "single",
+      "clueSource": "caption",
+      "sponsored": false,
+      "places": [
+        {
+          "name": "나랑가",
+          "address": "서울 마포구 성미산로 71 1층",
+          "kakaoPlaceId": "18257463",
+          "regionHint": "망원",
+          "verified": true
+        }
+      ],
+      "notes": "카테고리 필터 없이 '나랑가' 검색 시 장성군 협동조합이 1위. 실제 지번은 성산동."
+    },
+    {
+      "id": "s12",
+      "url": "https://www.instagram.com/p/DXijTeAAWME/?img_index=2&psln=MTdwNzFubWZpeXRnNA==",
+      "shortcode": "DXijTeAAWME",
+      "type": "post",
+      "imgIndex": 2,
+      "account": "mensnow_",
+      "kind": "multi",
+      "clueSource": "carousel_image",
+      "sponsored": false,
+      "places": [
+        {
+          "name": "산수쌈밥",
+          "address": "동계로 11",
+          "kakaoPlaceId": null,
+          "regionHint": null,
+          "verified": false
+        },
+        {
+          "name": "서울곱창",
+          "address": "광주 광산구 송정로15번길 71 1층",
+          "kakaoPlaceId": null,
+          "regionHint": null,
+          "verified": true
+        },
+        {
+          "name": "행복담",
+          "address": "서석로85번길 2",
+          "kakaoPlaceId": null,
+          "regionHint": null,
+          "verified": false
+        },
+        {
+          "name": "부부더상록",
+          "address": "상무중앙로78번길 5-6",
+          "kakaoPlaceId": null,
+          "regionHint": null,
+          "verified": false
+        }
+      ],
+      "notes": "52곳은 캐러셀 이미지에 4곳씩. places는 img_index=2 이미지의 4곳만. 서울곱창은 상호만으로 전국 1,566건, 주소 검색 시 1위."
+    },
+    {
+      "id": "s13",
+      "url": "https://www.instagram.com/reel/DXYmHpKCdSC/?vrfl=em4zdGRyNmJhaXkw",
+      "shortcode": "DXYmHpKCdSC",
+      "type": "reel",
+      "imgIndex": null,
+      "account": "sugartokiee",
+      "kind": "single",
+      "clueSource": "caption",
+      "sponsored": false,
+      "places": [
+        {
+          "name": "코끼리생막창",
+          "address": "광주 광산구 남동길30번길 43 1층",
+          "kakaoPlaceId": "1911430625",
+          "regionHint": "도산동",
+          "verified": true
+        }
+      ],
+      "notes": "가장 구조화된 캡션(주소·영업시간·가격·유아의자·주차·셀프바·점심특선)."
+    }
+  ]
+}
