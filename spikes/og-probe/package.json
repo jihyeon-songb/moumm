@@ -1,0 +1,11 @@
+{
+  "name": "moumm-og-probe",
+  "private": true,
+  "type": "module",
+  "description": "Phase 0 spike: can a server read Instagram og meta (caption) for a post/reel link?",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "local": "node run.js --local",
+    "test": "node test.js"
+  }
+}
