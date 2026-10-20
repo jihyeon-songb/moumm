@@ -1,0 +1,6 @@
+# Only install package versions published at least 7 days ago (minutes) — guards against freshly published malicious versions.
+minimumReleaseAge: 10080
+
+ignoredBuiltDependencies:
+  - sharp
+  - unrs-resolver

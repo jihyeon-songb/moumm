@@ -1,6 +1,31 @@
-.superpowers/
-.next/
-node_modules/
+# dependencies
+/node_modules
+.pnpm-debug.log*
+
+# next.js
+/.next/
+/out/
+/build
+next-env.d.ts
+*.tsbuildinfo
+
+# testing
+/coverage
+/test-results/
+/playwright-report/
+/blob-report/
+
+# env files
 .env*
 !.env.example
 
+# vercel
+.vercel
+
+# editors / OS
+.idea/
+.DS_Store
+*.pem
+
+# brainstorming tool state
+.superpowers/
