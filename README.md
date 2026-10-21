@@ -2,6 +2,8 @@
 
 인스타그램에서 발견한 맛집·카페 링크를 붙여넣으면, 게시물의 추천 정보와 장소 정보를 한 화면에 모아 방문 여부를 판단하도록 돕는 모바일 웹.
 
+> **상태: Phase 0 진행 중** — 실제 링크로 단서 추출 정확도를 측정하는 단계. 평가 기준과 점수는 `docs/evals.md`.
+
 - 설계: `docs/superpowers/specs/2026-10-13-moumm-mvp-design.md`
 - 현재 단계 계획: `docs/superpowers/plans/2026-10-15-moumm-mvp-step-1-1.md`
 - Phase 0 측정: `docs/phase0/`, `spikes/og-probe/`
