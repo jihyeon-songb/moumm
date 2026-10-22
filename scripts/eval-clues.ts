@@ -3,10 +3,12 @@
 //   pnpm eval:clues --model gemini-3.6-flash
 //   pnpm eval:clues --only s03,s09
 //   pnpm eval:clues --verbose        # 장소별 지역 해석·협찬 판정도 출력
-// 필요: .env.local의 GEMINI_API_KEY, fixtures/phase0/private/captions.json
+//   pnpm eval:clues --baseline       # LLM 없이 규칙 기반 baseline으로 채점 (API 키 불필요)
+// 필요: .env.local의 GEMINI_API_KEY(--baseline이면 불필요), fixtures/phase0/private/captions.json
 // 결과 상세는 fixtures/phase0/private/eval/ 에 저장된다 (캡션에서 뽑은 내용이라 git 제외).
 import { existsSync, mkdirSync, writeFileSync } from "node:fs";
-import { extractClues } from "@/lib/clues/extract";
+import { BASELINE_VERSION, extractBaseline } from "@/lib/clues/baseline";
+import { extractClues, type ExtractResult } from "@/lib/clues/extract";
 import { PROMPT_VERSION } from "@/lib/clues/prompt";
 import { createGeminiProvider, DEFAULT_GEMINI_MODEL } from "@/lib/clues/providers/gemini";
 import { scoreSample, type SampleScore } from "@/lib/clues/score";
@@ -20,8 +22,9 @@ const arg = (name: string) => {
 
 if (existsSync(".env.local")) process.loadEnvFile(".env.local");
 
+const baseline = args.includes("--baseline");
 const apiKey = process.env.GEMINI_API_KEY;
-if (!apiKey) {
+if (!baseline && !apiKey) {
   console.error("GEMINI_API_KEY가 없어요. .env.local에 넣어 주세요.");
   process.exit(1);
 }
@@ -30,19 +33,33 @@ if (!hasPrivateCaptions) {
   process.exit(1);
 }
 
-const model = arg("model") ?? process.env.GEMINI_MODEL ?? DEFAULT_GEMINI_MODEL;
+const model = baseline ? "baseline" : (arg("model") ?? process.env.GEMINI_MODEL ?? DEFAULT_GEMINI_MODEL);
+const promptVersion = baseline ? BASELINE_VERSION : PROMPT_VERSION;
 const only = arg("only")?.split(",");
 const verbose = args.includes("--verbose");
-const provider = createGeminiProvider({ apiKey, model });
+const provider = baseline ? null : createGeminiProvider({ apiKey: apiKey!, model });
 const samples = phase0Samples.filter((s) => !only || only.includes(s.id));
 
-console.log(`모델 ${provider.name} · 프롬프트 ${PROMPT_VERSION} · 샘플 ${samples.length}개\n`);
+console.log(
+  baseline
+    ? `규칙 기반 baseline ${BASELINE_VERSION} · 샘플 ${samples.length}개\n`
+    : `모델 ${provider!.name} · 프롬프트 ${PROMPT_VERSION} · 샘플 ${samples.length}개\n`,
+);
+
+async function run(sample: (typeof samples)[number]): Promise<ExtractResult> {
+  if (!provider) {
+    const started = Date.now();
+    const clues = extractBaseline(sample.caption!);
+    return { ok: true, clues, model: "baseline", attempts: [{ ms: Date.now() - started, outcome: "ok" }] };
+  }
+  return extractClues({ caption: sample.caption!, account: sample.account }, provider);
+}
 
 async function main() {
   const rows: { score: SampleScore | null; ms: number; tries: number; error?: string; output?: unknown }[] = [];
 
   for (const sample of samples) {
-    const result = await extractClues({ caption: sample.caption!, account: sample.account }, provider);
+    const result = await run(sample);
     const ms = result.attempts.reduce((sum, a) => sum + a.ms, 0);
     const tries = result.attempts.length;
 
@@ -92,7 +109,7 @@ async function main() {
   const dir = "fixtures/phase0/private/eval";
   mkdirSync(dir, { recursive: true });
   const file = `${dir}/${new Date().toISOString().replace(/[:.]/g, "-").slice(0, 19)}-${model}.json`;
-  writeFileSync(file, JSON.stringify({ model, promptVersion: PROMPT_VERSION, rows }, null, 2));
+  writeFileSync(file, JSON.stringify({ model, promptVersion, rows }, null, 2));
   console.log(`\n상세 결과: ${file}`);
 }
 
